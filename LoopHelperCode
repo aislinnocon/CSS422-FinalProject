@@ -1,0 +1,57 @@
+src		DCB		'a','b','c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'
+dst		DCB		0 ; final destination
+		
+		LDR		R1, =src ; r0 equal to source
+		LDR		R0, =dst
+		MOV		R2, #12 ; change to n
+		
+lbegin	LDRB		R3, [R1] ; R1 = src->val
+		STRB		R3, [R0]
+		ADD		R1, R1, #1 ; incrementing memory address
+		
+		ADD		R0, R0, #1
+		SUBS		R2, R2, #1 ; counter--
+		BNE		lbegin
+		
+stop
+		
+		END
+		
+		
+		
+		
+		;
+		;
+		;		LDR		R0, =src x
+		;		LDRB		R1, [R0] x
+		;		SUB		R2, R1, #0x20
+		;		LDR		R3, =dst
+		;		STRB		R2, [R3]
+		;
+		;		ADD		R0, R0, #1
+		;		LDRB		R1, [R0]
+		;		SUB		R2, R1, #0x20
+		;		ADD		R3, R3, #1
+		;		STRB		R2, [R3]
+		
+		
+		;		BZero Function Answer
+		;		LDR		R0, =src ; r0 equal to source
+		;		;		LDR		R3, =dst
+		;		MOV		R2, #12 ; change to n
+		;
+		;lbegin	;LDRB		R1, [R0] ; R1 = src->val
+		;		MOV		R1, #0
+		;		STRB		R1, [R0]
+		;
+		;		;STRB	R0, [R4]
+		;		ADD		R0, R0, #1 ; incrementing memory address
+		;		;MOV		R3, #0
+		;		;STRB	R0, [R0]
+		;
+		;		SUBS		R2, R2, #1 ; counter--
+		;		BNE		lbegin
+		;
+		;stop
+		;
+		;		END
